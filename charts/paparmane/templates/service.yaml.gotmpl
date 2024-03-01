@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.name }}
+  namespace: {{ .Values.namespace.name }}
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ .Values.service.name }}
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80

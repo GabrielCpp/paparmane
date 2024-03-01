@@ -1,0 +1,74 @@
+[
+  {
+    "ID": "1",
+    "user_login": "admin",
+    "user_pass": "$P$BiT543Bd4iQ5Q6Eq2WyqcJ0Q.Vqd3y1",
+    "user_nicename": "admin",
+    "user_email": "test@gmail.com",
+    "user_url": "https://paparmaneintergeneration.com",
+    "user_registered": "2023-09-29 19:45:17",
+    "user_activation_key": "",
+    "user_status": "0",
+    "display_name": "admin"
+  },
+  {
+    "ID": "31",
+    "user_login": "amaboula",
+    "user_pass": "$P$BdJlHMzKeicgPfXcItgXDRcLe2lVJG/",
+    "user_nicename": "amaboula",
+    "user_email": "maboulaantoine@gmail.com",
+    "user_url": "",
+    "user_registered": "2023-12-28 13:11:00",
+    "user_activation_key": "1703769060:$P$Bji4YYCsJhJpyawleeMz1h22Uml0B6/",
+    "user_status": "0",
+    "display_name": "maboula Antoine"
+  },
+  {
+    "ID": "32",
+    "user_login": "toto",
+    "user_pass": "$P$BJciogRWOFSo4vyTpZrZdAdFywwk2r/",
+    "user_nicename": "toto",
+    "user_email": "kmerinnov@gmail.com",
+    "user_url": "",
+    "user_registered": "2023-12-28 14:02:37",
+    "user_activation_key": "",
+    "user_status": "0",
+    "display_name": "toto2 toto2"
+  },
+  {
+    "ID": "33",
+    "user_login": "MarcWilliam",
+    "user_pass": "$P$BmlOm1HQlmJEyEGk5ZZaGNBKtllbbw0",
+    "user_nicename": "marcwilliam",
+    "user_email": "marc-william@hotmail.com",
+    "user_url": "",
+    "user_registered": "2023-12-28 16:08:00",
+    "user_activation_key": "1704224700:$P$BYT7eZJ2n.l.wfno6S/wXzzxjg/2pJ.",
+    "user_status": "0",
+    "display_name": "Marc-William Gagné"
+  },
+  {
+    "ID": "34",
+    "user_login": "admin_paparmane",
+    "user_pass": "$P$BWkdClLyPQL8GrRWhdv1EDPBUFfpWH/",
+    "user_nicename": "admin_paparmane",
+    "user_email": "marc-william@paparmaneintergeneration.com",
+    "user_url": "",
+    "user_registered": "2024-01-12 15:15:41",
+    "user_activation_key": "1705072542:$P$B3dQhsGiQ5IQsJU6KNCMWkrl/.CFw3.",
+    "user_status": "0",
+    "display_name": "Marc-William Gagné"
+  },
+  {
+    "ID": "35",
+    "user_login": "Olivier",
+    "user_pass": "$P$BAk6OK83xYAtdeR.yrjVckyonJEEIM/",
+    "user_nicename": "olivier",
+    "user_email": "olivier@declencheur.ca",
+    "user_url": "",
+    "user_registered": "2024-01-18 23:54:26",
+    "user_activation_key": "1705622066:$P$B4VXOlWL.ZbbFRDxX97ma44MVpSNs20",
+    "user_status": "0",
+    "display_name": "Olivier Desjardins"
+  }
+]

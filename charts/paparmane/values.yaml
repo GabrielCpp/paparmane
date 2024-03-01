@@ -1,0 +1,12 @@
+image:
+  repository: northamerica-northeast1-docker.pkg.dev/paparman/paparmane/paparmane
+  tag: latest
+  pullPolicy: Always
+
+namespace:
+  name: prod
+
+service:
+  name: paparmane
+  ingress:
+    host: paparmane.gabcpp.biz

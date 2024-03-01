@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "willy-gaby"
+version = "0.1.0"
+description = ""
+authors = ["Gabriel Coté <gabcpp@outlook.fr>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+llama-cpp-python = "^0.2.36"
+requests = "^2.31.0"
+litestar = {extras = ["standard"], version = "^2.5.5"}
+phpserialize = "^1.3"
+python-dotenv = "^1.0.1"
+google-cloud-storage = "^2.14.0"
+google-api-python-client = "^2.116.0"
+google-auth-httplib2 = "^0.2.0"
+google-auth-oauthlib = "^1.2.0"
+google-cloud-tasks = "^2.16.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
