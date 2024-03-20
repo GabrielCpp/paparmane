@@ -8,6 +8,12 @@ from willy_gaby.match import check_match
 
 load_dotenv()
 
+from google.cloud import storage, firestore
+import os 
+from dataclasses import asdict
+
+project_id = os.getenv("PROJECT_ID")
+db = firestore.AsyncClient(project=project_id, database="paparmane")
 
 @dataclass
 class Profile:
@@ -18,13 +24,39 @@ class Profile:
     def to_prompt(self):
         return "\n".join(
             [
-                f"{question} : {answer}"
+                f"{question} {answer}"
                 for question, answer in self.questions.items()
             ]
         )
 
+async def create_user_profile_db(profile: Profile):
+    await db.collection("users").document(profile.user_id).set(asdict(profile))
 
-def get_matches(user_id: int, token: str):
+async def get_user_user_profile_db(user_id):
+    doc_ref = db.collection("users").document(str(user_id))
+    doc = await doc_ref.get()
+
+    if not doc.exists:
+        return None
+
+    return Profile(**doc.to_dict())
+
+def all_user_user_profile_db():
+    return db.collection("users").order_by("name", direction=firestore.Query.ASCENDING).stream()
+
+def all_user_user_profile_ids_db():
+    return db.collection("users").stream()
+    doc.reference.path
+
+async def set_match(profileA: Profile, profileB: Profile, answer: str):
+    await db.collection("matches").document(f"{profileA.user_id}_{profileB.user_id}").set({
+        "profileA": asdict(profileA),
+        "profileB": asdict(profileB),
+        "answer": answer,
+        "match": "YES" in answer
+    })
+
+def get_user_profile(user_id: int, token: str) -> Profile:
     response = requests.get(
         f"https://paparmaneintergeneration.com/wp-json/mo/v1/full_form?custom_id={user_id}",
         headers={"Authorization": "Bearer "},
@@ -51,7 +83,11 @@ def get_matches(user_id: int, token: str):
         except:
             pass
 
-        questions[obj[b"label"].decode("utf8")] = value
+        key = obj[b"label"].decode("utf8").strip()
+        if key == "":
+            continue
+
+        questions[key] = value
 
     if len(metadata) == 0:
         return None
@@ -70,31 +106,3 @@ def get_users(token: str):
     return [user["ID"] for user in users if not user["user_login"].startswith("admin")]
 
 
-# token = os.getenv("WORDPRESS_TOKEN")
-
-
-# users = []
-# for userId in get_users(token):
-#     users.append(get_matches(userId, token))
-
-# with open("matchs.json", "w") as f:
-#     for userA in users:
-#         for userB in users:
-#             if userA == userB:
-#                 continue
-
-#             print(
-#                 f""" 
-#   ### Instruction
-#   Determine if the following two profiles are a match. Answer with "yes" or "no", then explain why.
-#   ### Profile A
-#   {userA.to_prompt()}
-#   ### Profile B 
-#   {userB.to_prompt()}
-#   ### Output
-#   """
-#             )
-
-#             break
-
-            # f.write(json.dumps(check_match(userA, userB)) + "\n")

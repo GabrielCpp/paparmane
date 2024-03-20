@@ -17,17 +17,24 @@ body = {
     "name": "Gaby",
 }
 
+url = "https://paparmane-ai-e3d2pnjrvq-uc.a.run.app/users/register_match"
 
-# Add the task to the queue.
-task = tasks_v2.Task(
-    http_request={
-        "http_method": tasks_v2.HttpMethod.POST,
-        "headers": {"Content-type": "application/json"},
-        "body": json.dumps(body).encode(),
-    },
-    schedule_time=schedule_time,
-)
+def queue_match(profileA, profileB, schedule_time):
+    # Add the task to the queue.
+    task = tasks_v2.Task(
+        http_request=tasks_v2.HttpRequest(
+            http_method=tasks_v2.HttpMethod.POST,
+            url=url,
+            oidc_token=tasks_v2.OidcToken(
+                service_account_email="706612247533-compute@developer.gserviceaccount.com",
+                #audience=audience,
+            ),
+            headers={"Content-type": "application/json"},
+            body=json.dumps(body).encode(),
+        ),
+        schedule_time=schedule_time,
+    )
 
-client.create_task(parent=task_queue, task=task)
+    client.create_task(parent=task_queue, task=task)
 
-print("Created task {}".format(response.name))
+

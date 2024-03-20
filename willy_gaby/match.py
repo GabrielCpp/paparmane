@@ -16,7 +16,7 @@ llm = Llama(
 def check_match(profileA, profileB):
     prompt = f""" 
   ### Instruction
-  Determine if `A` and `B` would be a good fit to live together. The match must be done based on whether or not the profiles convey a similar idea or message. Answer with `YES` or `NO` in `Output`. Then, explain why in the section `Explanation`.
+  Assess the compatibility of roommates A and B for intergenerational cohabitation. Allow to match when candidates have any ground. Significant differences are accepted. Answer with `YES` or `NO` in `Output`. In any cases, highligt the key words that lead to the result in the section `Explanation`.
   ### A
   {profileA.to_prompt()}
   ### B 

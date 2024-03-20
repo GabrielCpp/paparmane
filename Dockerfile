@@ -16,6 +16,7 @@ RUN poetry config virtualenvs.create true \
 COPY willy_gaby /app/willy_gaby
 COPY README.md /app/README.md
 COPY app.py app.py
+COPY uvicorn_entry.py uvicorn_entry.py
 RUN poetry install --only-root
 
 FROM python:3.12.1-slim-bookworm as release
@@ -26,5 +27,4 @@ COPY models/ /app/models/
 COPY --from=build /app /app
 ENV PATH="/app/.venv/bin:$PATH"
 ENV PORT=80
-ENV UVICORN_PORT=${PORT}
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0"]
+CMD ["python", "uvicorn_entry.py"]

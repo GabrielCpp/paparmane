@@ -12,6 +12,11 @@ build:
 push: build
 	gcloud config set project paparman && docker push $(GCR_URL)/$(PROJECT_ID)/$(REPOSITORY)/$(IMAGE_NAME):$(TAG)
 
+.PHONY: deploy
+deploy: push
+	gcloud run deploy paparmane --region=northamerica-northeast1 --cpu=2 --memory=8Gi --no-allow-unauthenticated --image=$(GCR_URL)/$(PROJECT_ID)/$(REPOSITORY)/$(IMAGE_NAME):$(TAG) && \
+	gcloud run deploy paparmane-ai --region=northamerica-northeast1 --cpu=2 --memory=8Gi --no-allow-unauthenticated --image=$(GCR_URL)/$(PROJECT_ID)/$(REPOSITORY)/$(IMAGE_NAME):$(TAG)
+
 .PHONY: cluster-auth
 cluster-auth:
 	gcloud container clusters get-credentials $(PROJECT_ID) --zone northamerica-northeast1 --project $(PROJECT_ID)
@@ -27,3 +32,7 @@ install-nats:
 .PHONY: install-nginx
 install-nginx:
 	helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx && helm install nginx-ingress ingress-nginx/ingress-nginx --namespace nginx --create-namespace
+
+.PHONY: token
+token:
+	gcloud auth print-identity-token
