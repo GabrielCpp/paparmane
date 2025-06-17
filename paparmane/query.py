@@ -4,7 +4,7 @@ from dataclasses import dataclass, asdict
 import os
 from dotenv import load_dotenv
 import json
-from willy_gaby.match import check_match
+from paparmane.match import check_match
 
 load_dotenv()
 

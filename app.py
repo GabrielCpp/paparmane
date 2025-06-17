@@ -1,4 +1,4 @@
-from willy_gaby import main
+from paparmane import main
 
 
 app = main.app

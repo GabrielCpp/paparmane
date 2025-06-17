@@ -5,9 +5,9 @@ from litestar import Litestar, get, post, Request, Response, MediaType
 from litestar.exceptions import HTTPException
 from litestar.logging import LoggingConfig
 from dataclasses import dataclass
-from willy_gaby.query import Profile, get_users, get_user_profile, create_user_profile_db, all_user_user_profile_ids_db, all_user_user_profile_db, set_match, get_user_user_profile_db
-from willy_gaby.match import check_match
-from willy_gaby.tasks import queue_match
+from paparmane.query import Profile, get_users, get_user_profile, create_user_profile_db, all_user_user_profile_ids_db, all_user_user_profile_db, set_match, get_user_user_profile_db
+from paparmane.match import check_match
+from paparmane.tasks import queue_match
 from typing import Annotated
 from litestar.params import Body
 

@@ -13,7 +13,7 @@ RUN poetry config virtualenvs.create true \
   && poetry config virtualenvs.in-project true \
   && poetry install --no-interaction --no-ansi
 
-COPY willy_gaby /app/willy_gaby
+COPY paparmane /app/paparmane
 COPY README.md /app/README.md
 COPY app.py app.py
 COPY uvicorn_entry.py uvicorn_entry.py
